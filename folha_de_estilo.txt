@@ -1,0 +1,10 @@
+#define →→→ Os defines tem que ter todas as letras em Caixa Alta;
+Ex: #define VARIAVEL
+
+variáveis globais precisam ter um g_(g e underline) antes do especificador.
+Ex: int g_especificador;
+
+typedef →→ Os typedefs tem que ter a primeira letra em caixa alta.
+Ex: typedef int Inteiro;
+
+funções, procedimentos e variáveis locais todas as letras minusculas.
