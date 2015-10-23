@@ -22,7 +22,7 @@ Todos os defines
     Data dia_da_atracao;
     char onde[100];
     int horario_de_funcionamento;
-    int numero_contato;//numero para mais 
+    int numero_contato;//numero para mais informações.
     int valor_ingresso;
     char descricao[300];
     /*
