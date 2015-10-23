@@ -1,18 +1,27 @@
 /*
   Especificação das funções de uso geral;
 */
-void adicionar_crud()
+
+//Retorna o valor correspondente ao CRUD.
+int escolher_crud()
 {
+  int escolha;
   printf("Digite 1 para Teatro Infantil.\n");
   printf("Digite 2 para Conteúdo Infantil.\n");
   printf("Digite 3 para Turismo em Goiás.\n");
   printf("Digite 4 para Pontos Turisticos de Goiania.\n");
+  scanf("%d", &escolha);
+  return escolha;
+}
 
-  int escolha;
-  do
+void adicionar_crud()
+{
+  int escolha = escolher_crud();
+  while(escolha < 1 || escolha > 4)
   {
-    scanf("%d",&escolha);
-  }while(escolha < 1 || escolha > 4);
+    printf("Numero não corresponde a nenhum CRUD. Escolha novamente.\n");
+    escolha = escolher_crud();
+  }
 
   switch(escolha)
   {
@@ -27,6 +36,32 @@ void adicionar_crud()
       break;
     case 4:
       create_pontos_turisticos();
+      break;
+  }
+}
+
+//escolhe o DIRETORIO que será lido.
+char* crud_para_ler()
+{
+  int escolha = escolher_crud();
+  while(escolha < 1 || escolha > 4)
+  {
+    printf("Numero não corresponde a nenhum CRUD. Escolha novamente.\n");
+    escolha = escolher_crud();
+  }
+  switch(escolha)
+  {
+    case 1:
+      return TEATRO_INFANTIL;
+      break;
+    case 2:
+      return CONTEUDO;
+      break;
+    case 3:
+      return TURISMO_EM_GOIAS;
+      break;
+    case 4:
+      return PONTOS_TURISTICOS_EM_GOIANIA;
       break;
   }
 }
@@ -54,4 +89,26 @@ char* alocar_memoria(const int tamanho)
 {
   char* p = (char*) malloc( tamanho * sizeof(char));
   return p;
+}
+
+void list_files_in_directory()
+{
+  DIR           *d;
+  struct dirent *dir;
+  d = opendir("./Teatro_Infantil/");
+
+  if (d)
+  {
+    while ((dir = readdir(d)) != NULL)
+    {
+      printf("%s\n", dir->d_name);
+    }
+
+    (void) closedir(d);
+  }
+  else
+  {
+    perror ("Couldn't open the directory");
+    exit(0);
+  }
 }

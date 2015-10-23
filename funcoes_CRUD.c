@@ -31,7 +31,6 @@ void create_teatro_infantil()
   fprintf(fp, "%s %s %d %d %d %d %d %d %s", atracao.nome, atracao.onde, atracao.dia_da_atracao.dia,
     atracao.dia_da_atracao.mes, atracao.dia_da_atracao.ano, atracao.horario_de_funcionamento,
     atracao.numero_contato, atracao.valor_ingresso, atracao.descricao);//Aqui é para usar o fwriter.
-
   fclose(fp);
 }
 
@@ -50,14 +49,25 @@ void create_turismo_em_goias()
 
 }
 
-void ler()
+void ler(char* nome_arquivo, char* nome_diretorio)
 {
+  char ch;
+  FILE* fp;
+  char* nome_diretorio = crud_para_ler();
 
+  fp = fopen(nome_arquivo);
+  ch = getc(fp);//Ler um caractere.
+
+  while(ch != EOF)
+  {
+    putchar(ch); // Imprime na tela.
+    ch = getc(fp);
+  }
 }
 
 void atualizar()
 {
-
+  //usar o modo "r+" que sobrescreve os dados do arquivo;
 }
 
 void deletar()
