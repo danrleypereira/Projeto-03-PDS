@@ -32,9 +32,21 @@ Todos os defines
     char descricao[300];
     /*
     Dentro de status tem que adicionar as seguintes informações;
-    Informações gerias sobre a atração;
+    Informações gerais sobre a atração;
     Pontos de venda;
     */
+  };
+
+  typedef struct CONTEUDO
+  {
+      char nome_do_evento[70];  //
+      Data dia_do_evento;
+      char local_do_evento[50];
+      int horario_funcionamento;
+      int num_contato;  //DDDe e-mail tbm?
+      double preco_ingresso;    // assim vao ser aceitos valores como R$1.90 ou R$999.99
+      char restricoes_do_evento[100];   // EX: Altura máxima permitida, etc.
+      char descricao[330];  //informações adicionais, local de compra de ingresso, etc.
   };
 
   int escolher_crud();
