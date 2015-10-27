@@ -49,6 +49,19 @@ Todos os defines
       char descricao[330];  //informações adicionais, local de compra de ingresso, etc.
   };
 
+
+  typedef struct Pontos_turisticos
+  {
+    char nome[100];
+    char localizacao[100];
+    int horario_de_funcionamento;// o horário deve ser dado em 0-23 horas
+    int numero_contato;.
+    double area;// a área será dada em metros quadrados. Será aceito o valor numérico de até 240.000
+    char informacoes[300];/*descrição geral do ponto turístico, preço, informações sobre agendamento de visita,
+    telefones para contato,pontos de referencia e a área do local.*/
+
+  };
+
   int escolher_crud();
   void adicionar_crud();
   char* crud_para_ler();
