@@ -37,16 +37,41 @@ Todos os defines
     */
   };
 
-  typedef struct CONTEUDO
+    typedef struct HORARIO{
+        int hora;
+        int minuto;
+    };
+
+    typedef struct CONTATO{
+        int numero_contato;
+        char email_contato[50];
+    };
+
+  typedef struct Conteudo //andre e matheus
   {
       char nome_do_evento[70];  //
-      Data dia_do_evento;
+      Data dia_de_inicio_evento;
+      Data dia_fim_evento;
       char local_do_evento[50];
-      int horario_funcionamento;
-      int num_contato;  //DDDe e-mail tbm?
+      HORARIO horario_inicial;
+      HORARIO horario_final;
+      CONTATO info_contato;  //DDDe e-mail tbm?
       double preco_ingresso;    // assim vao ser aceitos valores como R$1.90 ou R$999.99
       char restricoes_do_evento[100];   // EX: Altura máxima permitida, etc.
-      char descricao[330];  //informações adicionais, local de compra de ingresso, etc.
+      char descricao[335];  //informações adicionais, local de compra de ingresso, etc.
+  };
+
+
+  typedef struct Pontos_turisticos
+  {
+    char nome[100];
+    char localizacao[100];
+    int horario_de_funcionamento;// o horário deve ser dado em 0-23 horas
+    int numero_contato;
+    double area;// a área será dada em metros quadrados. Será aceito o valor numérico de até 240.000
+    char informacoes[300];/*descrição geral do ponto turístico, preço, informações sobre agendamento de visita,
+    telefones para contato,pontos de referencia e a área do local.*/
+
   };
 
    typedef struct Pontos_turisticos
