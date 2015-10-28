@@ -18,7 +18,7 @@ Todos os defines
   #define TEATRO_INFANTIL "Teatro_Infantil/"
   #define CONTEUDO "Conteudo/"
   #define TURISMO_EM_GOIAS "Turismo_em_Goias/"
-  #define PONTOS_TURISTICOS_EM_GOIANIA "Pontos_Turisticos_em_Goiania/"
+  #define PONTOS_TURISTICOS "Pontos_Turisticos/"
 
   typedef struct {int dia, mes, ano;} Data;
   typedef struct Teatro_infantil
@@ -74,17 +74,6 @@ Todos os defines
 
   };
 
-   typedef struct Pontos_turisticos
-  {
-    char nome[100];
-    char localizacao[100];
-    int horario_de_funcionamento;// o horário deve ser dado em 0-23 horas
-    int numero_contato;.
-    double area;// a área será dada em metros quadrados. Será aceito o valor numérico de até 240.000
-    char informacoes[300];/*descrição geral do ponto turístico, preço, informações sobre agendamento de visita,
-    telefones para contato,pontos de referencia e a área do local.*/
-
-  };
 
   int escolher_crud();
   void adicionar_crud();
