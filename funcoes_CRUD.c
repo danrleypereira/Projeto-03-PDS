@@ -92,6 +92,20 @@ void create_conteudo()
 
 void create_pontos_turisticos()
 {
+    struct Pontos_turisticos pontoTuristico;
+    FILE *fp;
+
+    printf("\nIntroduza o nome:");gets(pontoTuristico.nome);__fpurge(stdin);
+    printf("\nIntroduza a localizacao:");gets(pontoTuristico.localizacao);
+    printf("\nIntroduza o horario de funcionamento:");
+
+    printf("\nIntroduza a area do local:");scanf("%lf", &pontoTuristico.area);
+    printf("\nIntroduza o telefone para contato:");scanf("%d", &pontoTuristico.numero_contato);
+
+    printf("\nIntroduza as seguintes informacoes sobre o ponto turistico:\n1. Descricao Geral\n2.Valor da Entrada\n");
+    printf("3.Informacoes sobre agendamento de Visita\n4.Telefones para contato\n5.Pontos de referencia\n6.Área do local");
+     /* A área e o telefone solicitado devem ser incluidos nas informações. Caso necessário, o horário
+     de funcionamento também pode ser incluído/*
 
 }
 

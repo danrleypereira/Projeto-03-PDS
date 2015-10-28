@@ -18,7 +18,7 @@ Todos os defines
   #define TEATRO_INFANTIL "Teatro_Infantil/"
   #define CONTEUDO "Conteudo/"
   #define TURISMO_EM_GOIAS "Turismo_em_Goias/"
-  #define PONTOS_TURISTICOS_EM_GOIANIA "Pontos_Turisticos_em_Goiania/"
+  #define PONTOS_TURISTICOS "Pontos_Turisticos/"
 
   typedef struct {int dia, mes, ano;} Data;
   typedef struct Teatro_infantil
@@ -73,6 +73,7 @@ Todos os defines
     telefones para contato,pontos de referencia e a área do local.*/
 
   };
+
 
   int escolher_crud();
   void adicionar_crud();
