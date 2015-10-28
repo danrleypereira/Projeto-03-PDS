@@ -47,7 +47,7 @@ Todos os defines
         char email_contato[50];
     };
 
-  typedef struct CONTEUDO //andre e matheus
+  typedef struct Conteudo //andre e matheus
   {
       char nome_do_evento[70];  //
       Data dia_de_inicio_evento;
@@ -67,7 +67,7 @@ Todos os defines
     char nome[100];
     char localizacao[100];
     int horario_de_funcionamento;// o horário deve ser dado em 0-23 horas
-    int numero_contato;.
+    int numero_contato;
     double area;// a área será dada em metros quadrados. Será aceito o valor numérico de até 240.000
     char informacoes[300];/*descrição geral do ponto turístico, preço, informações sobre agendamento de visita,
     telefones para contato,pontos de referencia e a área do local.*/

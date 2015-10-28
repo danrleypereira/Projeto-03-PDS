@@ -25,7 +25,7 @@ int main()
       adicionar_crud(escolher_crud());
       break;
     case 2:
-      ler(escolher_crud())
+      ler(escolher_crud());
       break;
   }
 
