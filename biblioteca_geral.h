@@ -37,16 +37,28 @@ Todos os defines
     */
   };
 
-  typedef struct CONTEUDO
+    typedef struct HORARIO{
+        int hora;
+        int minuto;
+    };
+
+    typedef struct CONTATO{
+        int numero_contato;
+        char email_contato[50];
+    };
+
+  typedef struct CONTEUDO //andre e matheus
   {
       char nome_do_evento[70];  //
-      Data dia_do_evento;
+      Data dia_de_inicio_evento;
+      Data dia_fim_evento;
       char local_do_evento[50];
-      int horario_funcionamento;
-      int num_contato;  //DDDe e-mail tbm?
+      HORARIO horario_inicial;
+      HORARIO horario_final;
+      CONTATO info_contato;  //DDDe e-mail tbm?
       double preco_ingresso;    // assim vao ser aceitos valores como R$1.90 ou R$999.99
       char restricoes_do_evento[100];   // EX: Altura máxima permitida, etc.
-      char descricao[330];  //informações adicionais, local de compra de ingresso, etc.
+      char descricao[335];  //informações adicionais, local de compra de ingresso, etc.
   };
 
 
