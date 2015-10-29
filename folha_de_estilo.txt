@@ -1,5 +1,7 @@
-#define →→→ Os defines tem que ter todas as letras em Caixa Alta;
-Ex: #define VARIAVEL
+#define →→→ As constantes tem que ter todas as letras em Caixa Alta;
+Ex:
+#define VARIAVEL
+static const char VARIAVEL
 
 variáveis globais precisam ter um g_(g e underline) antes do especificador.
 Ex: int g_especificador;
@@ -8,3 +10,6 @@ typedef →→ Os typedefs tem que ter a primeira letra em caixa alta.
 Ex: typedef int Inteiro;
 
 funções, procedimentos e variáveis locais todas as letras minusculas.
+
+Os operadores tem que ter espaço entre as variáveis.
+Ex: variavel1 <= variavel2;
