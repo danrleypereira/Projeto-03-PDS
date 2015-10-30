@@ -92,20 +92,33 @@ void create_conteudo()
 
 void create_pontos_turisticos()
 {
-struct Pontos_turisticos pontoTuristico;
-    FILE *fp;
+        struct Pontos_turisticos pontoTuristico;
+        FILE *fp;
 
-    printf("\nIntroduza o nome:");gets(pontoTuristico.nome);__fpurge(stdin);
-    printf("\nIntroduza a localizacao:");gets(pontoTuristico.localizacao);
-    printf("\nIntroduza o horario de funcionamento:");
+     memset(pontoTuristico.nome, '\0', sizeof(pontoTuristico.nome));
+     memset(pontoTuristico.localizacao, '\0', sizeof(pontoTuristico.localizacao));
+     memset(pontoTuristico.informacoes, '\0', sizeof(pontoTuristico.informacoes));
+
+    printf("\nIntroduza o nome:");scanf("%20[^\n]", &pontoTuristico.nome); __fpurge(stdin);
+    printf("\nIntroduza a localizacao:");scanf("%100[^\n]", &pontoTuristico.localizacao); __fpurge(stdin);
+    printf("\nIntroduza o horario de funcionamento:");scanf("%d", &pontoTuristico.horario_de_funcionamento);
 
     printf("\nIntroduza a area do local:");scanf("%lf", &pontoTuristico.area);
     printf("\nIntroduza o telefone para contato:");scanf("%d", &pontoTuristico.numero_contato);
 
     printf("\nIntroduza as seguintes informacoes sobre o ponto turistico:\n1. Descricao Geral\n2.Valor da Entrada\n");
     printf("3.Informacoes sobre agendamento de Visita\n4.Telefones para contato\n5.Pontos de referencia\n6.Área do local");
+    scanf("%300[^\n]", &pontoTuristico.informacoes); __fpurge(stdin);
+
      /* A área e o telefone solicitado devem ser incluidos nas informações. Caso necessário, o horário
      de funcionamento também pode ser incluído*/
+
+     fp = abrir_arquivo(PONTOS_TURISTICOS, pontoTuristico.nome, fp);
+     fputs(pontoTuristico.nome, fp);
+     fputs(pontoTuristico.localizacao, fp);
+     fprintf(fp, "%d %d %d",pontoTuristico.area,pontoTuristico.horario_de_funcionamento,pontoTuristico.numero_contato);
+     fputs(pontoTuristico.informacoes, fp);
+     fclose(fp);
 }
 
 void create_turismo_em_goias()
