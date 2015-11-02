@@ -16,26 +16,34 @@ int main()
 {
   int escolha;
 
-  printf("Digite 1: Adicionar um CRUD.\n");
-  printf("Digite 2: Acessar um CRUD.\n");
-  printf("Digite 3: Atualizar um CRUD.\n");
-  printf("Digite 4: Deletar um CRUD.\n");
-  scanf("%d", &escolha);
+  do {
 
-  switch (escolha) {
-    case 1:
-      adicionar_crud();
-      break;
-    case 2:
-      ler();
-      break;
-    case 3:
-        atualizar();
-        break;
-    case 4:
-        deletar();
-        break;
-  }
+      printf("Digite 1: Adicionar um CRUD.\n");
+      printf("Digite 2: Acessar um CRUD.\n");
+      printf("Digite 3: Atualizar um CRUD.\n");
+      printf("Digite 4: Deletar um CRUD.\n");
+      printf("Digite 5: Sair")
+      scanf("%d", &escolha);
+
+      switch (escolha) {
+        case 1:
+          adicionar_crud();
+          break;
+        case 2:
+          ler();
+          break;
+        case 3:
+            atualizar();
+            break;
+        case 4:
+            deletar();
+            break;
+        case 5:
+            break;
+        default:
+            printf("Insira um opção válida.");
+      }
+  } while(escolha!=5);
 
   return 0;
 }
