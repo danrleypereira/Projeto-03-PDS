@@ -107,7 +107,7 @@ void create_pontos_turisticos()
     printf("\nIntroduza o telefone para contato:");scanf("%d", &pontoTuristico.numero_contato);
 
     printf("\nIntroduza as seguintes informacoes sobre o ponto turistico:\n1. Descricao Geral\n2.Valor da Entrada\n");
-    printf("3.Informacoes sobre agendamento de Visita\n4.Telefones para contato\n5.Pontos de referencia\n6.Área do local");
+    printf("3.Informacoes sobre agendamento de Visita\n4.Telefones para contato\n5.Pontos de referencia\n6.Area do local");
     scanf("%300[^\n]", &pontoTuristico.informacoes); __fpurge(stdin);
 
      /* A área e o telefone solicitado devem ser incluidos nas informações. Caso necessário, o horário
@@ -151,9 +151,40 @@ void ler(void)
 void atualizar()
 {
   //usar o modo "r+" que sobrescreve os dados do arquivo;
+    struct Pontos_turisticos pontoTuristico;
+    char nomeDoArquivo[20];
+
+    printf("Introduza o nome do CRUD que deseja atualizar: "); scanf("%s",nomeDoArquivo);
+
+    memset(pontoTuristico.nome, '\0', sizeof(pontoTuristico.nome));
+    memset(pontoTuristico.localizacao, '\0', sizeof(pontoTuristico.localizacao));
+    memset(pontoTuristico.informacoes, '\0', sizeof(pontoTuristico.informacoes));
+
+    printf("\nIntroduza o novo nome:");scanf("%20[^\n]", &pontoTuristico.nome); __fpurge(stdin);
+    printf("\nIntroduza a nova localizacao:");scanf("%100[^\n]", &pontoTuristico.localizacao); __fpurge(stdin);
+    printf("\nIntroduza o novo horario de funcionamento:");scanf("%d", &pontoTuristico.horario_de_funcionamento);
+
+    printf("\nIntroduza a nova area do local:");scanf("%lf", &pontoTuristico.area);
+    printf("\nIntroduza o novo telefone para contato:");scanf("%d", &pontoTuristico.numero_contato);
+
+    printf("\nIntroduza as seguintes informacoes sobre o ponto turistico:\n1. Noma descricao Geral\n2.Novo valor da Entrada\n");
+    printf("3.Novas informacoes sobre agendamento de Visita\n4.Novos telefones para contato\n5.Novos pontos de referencia\n6.Nova area do local");
+    scanf("%300[^\n]", &pontoTuristico.informacoes); __fpurge(stdin);
+
+    FILE *fp = fopen(nomeDoArquivo,"+r");
+    fputs(pontoTuristico.nome, fp);
+    fputs(pontoTuristico.localizacao, fp);
+    fprintf(fp, "%d %d %d",pontoTuristico.area,pontoTuristico.horario_de_funcionamento,pontoTuristico.numero_contato);
+    fputs(pontoTuristico.informacoes, fp);
+    fclose(fp);
+
 }
 
 void deletar()
 {
+    char nomeDoArquivo[20];
 
+    printf("Insira o nome do CRUD que deseja deletar: "); scanf("%s",nomeDoArquivo);
+
+    remove(nomeDoArquivo);
 }
