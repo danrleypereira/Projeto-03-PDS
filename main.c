@@ -22,7 +22,7 @@ int main()
       printf("Digite 2: Acessar um CRUD.\n");
       printf("Digite 3: Atualizar um CRUD.\n");
       printf("Digite 4: Deletar um CRUD.\n");
-      printf("Digite 5: Sair")
+      printf("Digite 5: Sair");
       scanf("%d", &escolha);
 
       switch (escolha) {

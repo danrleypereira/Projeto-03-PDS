@@ -113,7 +113,7 @@ void create_pontos_turisticos()
      /* A área e o telefone solicitado devem ser incluidos nas informações. Caso necessário, o horário
      de funcionamento também pode ser incluído*/
 
-     fp = abrir_arquivo(PONTOS_TURISTICOS, pontoTuristico.nome, fp);
+     fp = abrir_arquivo(PONTOS_TURISTICOS_EM_GOIANIA, pontoTuristico.nome, fp);
      fputs(pontoTuristico.nome, fp);
      fputs(pontoTuristico.localizacao, fp);
      fprintf(fp, "%d %d %d",pontoTuristico.area,pontoTuristico.horario_de_funcionamento,pontoTuristico.numero_contato);
