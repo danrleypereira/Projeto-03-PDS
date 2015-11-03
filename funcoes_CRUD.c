@@ -39,55 +39,93 @@ void create_teatro_infantil()
 
 void create_conteudo()
 {
-    struct Conteudo evento;
-    FILE *fp;
+  struct Conteudo evento;
+  FILE *fp;
 
-    printf("\nIntroduza um nome: ");    scanf("%70[^\n]", &evento.nome_do_evento); __fpurge(stdin);
+  evento.info_contato.numero_contato = 0;
+  evento.preco_ingresso = 0;
 
-    printf("\nIntroduza o dia de inicio do evento: ");  scanf("%i", &evento.dia_de_inicio_evento.dia);
-    printf("\nIntroduza o mes de inicio do evento: ");  scanf("%i", &evento.dia_de_inicio_evento.mes);
-    printf("\nIntroduza o ano de inicio do evento: ");  scanf("%i", &evento.dia_de_inicio_evento.ano);
+  do{
+      printf("\nIntroduza um nome para o evento: ");    gets(evento.nome_do_evento);    fflush(stdin);
+        if(evento.nome_do_evento[0]=='\0'){
+          printf("\nInsira um nome valido!\n");
+        }
+      }while( evento.nome_do_evento[0] ==  '\0');
 
-    printf("\nCaso seja um evento de dia unico, digite a mesma data\n");
-    printf("\nIntroduza o dia final do evento: ");  scanf("%i", &evento.dia_fim_evento.dia);
-    printf("\nIntroduza o mes final do evento: ");  scanf("%i", &evento.dia_fim_evento.mes);
-    printf("\nIntroduza o ano final do evento: ");  scanf("%i", &evento.dia_fim_evento.ano); __fpurge(stdin);
+  do{
+      printf("\nIntroduza o dia de inicio do evento: ");  scanf("%i", &evento.dia_de_inicio_evento.dia);  fflush(stdin);
+      printf("\nIntroduza o mes de inicio do evento: ");  scanf("%i", &evento.dia_de_inicio_evento.mes);  fflush(stdin);
+      printf("\nIntroduza o ano de inicio do evento: ");  scanf("%i", &evento.dia_de_inicio_evento.ano);  fflush(stdin);
+    if(evento.dia_de_inicio_evento.dia == 0 || evento.dia_de_inicio_evento.mes == 0 || evento.dia_de_inicio_evento.ano == 0)
+      {
+        printf("\nIntroduza novamente a data\n");
+      }
+  }while(evento.dia_de_inicio_evento.dia == 0 || evento.dia_de_inicio_evento.mes == 0 || evento.dia_de_inicio_evento.ano == 0);
 
-    printf("\nIntroduza o local ou endereço do evento: ");   scanf("%50[^\n]", &evento.local_do_evento); __fpurge(stdin);
+  printf("\nCaso seja um evento de dia unico, digite a mesma data\n");
+  do{
+      printf("\nIntroduza o dia final do evento: ");  scanf("%i", &evento.dia_fim_evento.dia);    fflush(stdin);
+      printf("\nIntroduza o mes final do evento: ");  scanf("%i", &evento.dia_fim_evento.mes);    fflush(stdin);
+      printf("\nIntroduza o ano final do evento: ");  scanf("%i", &evento.dia_fim_evento.ano);    fflush(stdin);
+      if(evento.dia_fim_evento.dia == 0 || evento.dia_fim_evento.mes == 0 || evento.dia_fim_evento.ano == 0)
+      {
+        printf("\nIntroduza novamente a data\n");
+      }
+  }while(evento.dia_fim_evento.dia == 0 || evento.dia_fim_evento.mes == 0 || evento.dia_fim_evento.ano == 0);
 
-    printf("\nIntroduza o horario de inicio do evento: ");   scanf("%i %i", &evento.horario_inicial.hora, &evento.horario_inicial.minuto);
-    printf("\nIntroduza o horario de termino do evento: ");    scanf("%i %i", &evento.horario_final.hora, &evento.horario_final.minuto);
+  do{
+      printf("\nIntroduza o local ou endereco do evento: ");   gets(evento.local_do_evento);  fflush(stdin);
+      if(evento.local_do_evento[0] == '\0')   printf("\nInsira um Local ou Endereco valido\n");
+    }while(evento.local_do_evento[0] == '\0');
 
-    printf("\nIntroduza o numero e e-mail de contato: ");  scanf("%i", &evento.info_contato.numero_contato);
-        scanf("%70[^\n]", &evento.info_contato.email_contato); __fpurge(stdin);
+    do{
+      printf("\nIntroduza o horario de inicio do evento: ");   scanf("%i %i", &evento.horario_inicial.hora, &evento.horario_inicial.minuto);
+      printf("\nIntroduza o horario de termino do evento: ");    scanf("%i %i", &evento.horario_final.hora, &evento.horario_final.minuto);
+      fflush(stdin);
+    if(evento.horario_inicial.hora == evento.horario_final.hora && evento.horario_inicial.minuto == evento.horario_final.minuto)
+      {
+        printf("\nInsira horarios diferentes\n");
+      }
+    }while(evento.horario_inicial.hora == evento.horario_final.hora && evento.horario_inicial.minuto == evento.horario_final.minuto);
 
-    printf("\nIntroduza o preço do ingresso/entrada: ");    scanf("%lf",&evento.preco_ingresso);
+    do{
+      printf("\nIntroduza o numero e e-mail de contato (e-mail opcional): ");  scanf("%li", &evento.info_contato.numero_contato);    fflush(stdin);
+      gets(evento.info_contato.email_contato);    fflush(stdin);
+      if(evento.info_contato.numero_contato == 0) {printf("\nIntroduza um numero de contato valido!\n");}
+    }while(evento.info_contato.numero_contato == 0);
 
-    printf("\nIntroduza as restricoes do evento, caso exista: ");   scanf("%100[^\n]", &evento.restricoes_do_evento); __fpurge(stdin);
+    printf("\nIntroduza o pre�o do ingresso/entrada (se for entrada franca digite 0): R$");    scanf("%lf",&evento.preco_ingresso);    fflush(stdin);
 
-    printf("\nIntroduza uma breve descricao do evento(max. 330 caracteres): ");  scanf("%355[^\n]", &evento.descricao); __fpurge(stdin);
+
+    printf("\nIntroduza as restricoes do evento, caso exista: ");   gets(evento.restricoes_do_evento);  fflush(stdin);
+
+    do{
+      printf("\nIntroduza uma breve descricao do evento(max. 330 caracteres): ");  gets(evento.descricao);    fflush(stdin);
+      if(evento.descricao[0] == '\0') {printf("\nIntroduza uma descricao valida!\n");}
+    }while(evento.descricao[0] == '\0');
 
     //gravar em arquivo
 
-     fp= abrir_arquivo(CONTEUDO, evento.nome_do_evento, fp);
-     //nome
-     fputs(evento.nome_do_evento, fp);
-     //info data
-     fprintf(fp, "%d %d %d", evento.dia_de_inicio_evento.dia, evento.dia_de_inicio_evento.mes, evento.dia_de_inicio_evento.ano);
-     fprintf(fp, "%d %d %d", evento.dia_fim_evento.dia, evento.dia_fim_evento.mes, evento.dia_fim_evento.ano);
-     //info local
-     fputs(evento.local_do_evento, fp);
-     //info horario
-     fprintf(fp, "%d %d", evento.horario_inicial.hora, evento.horario_inicial.minuto);
-     fprintf(fp, "%d %d", evento.horario_final.hora, evento.horario_final.minuto);
-     //info contato
-     fprintf(fp, "%d", evento.info_contato.numero_contato);
-     fputs(evento.info_contato.email_contato, fp);
-     //info preço
-     fprintf(fp, "%.2lf", evento.preco_ingresso);
-     //info restricao e descricao
-     fputs(evento.restricoes_do_evento, fp);    fputs(evento.descricao, fp);
-     fclose(fp);
+    fp= abrir_arquivo(CONTEUDO, evento.nome_do_evento, fp);
+    //nome
+    fputs(evento.nome_do_evento, fp);
+    //info data
+    fprintf(fp, " %2d/ %2d/ %2d ", evento.dia_de_inicio_evento.dia, evento.dia_de_inicio_evento.mes, evento.dia_de_inicio_evento.ano);
+    fprintf(fp, " %2d/ %2d/ %2d ", evento.dia_fim_evento.dia, evento.dia_fim_evento.mes, evento.dia_fim_evento.ano);
+    //info local
+    fputs(evento.local_do_evento, fp);
+    //info horario]
+    fprintf(fp, " %2d:%2d ", evento.horario_inicial.hora, evento.horario_inicial.minuto);
+    fprintf(fp, " %2d:%2d ", evento.horario_final.hora, evento.horario_final.minuto);
+    //info contato
+    fprintf(fp, " %d ", evento.info_contato.numero_contato);
+    fputs(evento.info_contato.email_contato, fp);
+    //info pre�o
+    fprintf(fp, " R$: %.2lf ", evento.preco_ingresso);
+    //info restricao e descricao
+    fputs(evento.restricoes_do_evento, fp);    fprintf(fp," ");    fputs(evento.descricao, fp);
+
+    fclose(fp);
 }
 
 void create_pontos_turisticos()
